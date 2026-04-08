@@ -45,8 +45,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="css/style.css?v=4.1" rel="stylesheet">
-    <link href="css/dark-mode.css" rel="stylesheet">
+    <link href="css/style.css?v=4.2" rel="stylesheet">
+    <link href="css/dark-mode.css?v=1.0" rel="stylesheet">
 </head>
 <body class="overflow-hidden-init">
 
@@ -63,7 +63,7 @@
     request.setAttribute("pageLabel", "Tələbələr");
     request.setAttribute("isHome", false);
 %>
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"/>
 
 <section class="py-5 students-section min-vh-100">
     <div class="container py-4 student-shell">
@@ -601,6 +601,11 @@
     </div>
 </div>
 
+<!-- Yuxarı Qayıt Düyməsi -->
+<button id="backToTop" class="btn btn-primary">
+    <i class="bi bi-arrow-up"></i>
+</button>
+
 <jsp:include page="footer.jsp"/>
 <jsp:include page="export-modal.jsp"/>
 
@@ -656,19 +661,24 @@
     }
 
     function getStudentExportData() {
-        const rows = _stuAllRows || Array.from(document.querySelectorAll('#studentTable tbody tr.stagger-item'));
         return {
-            headers: ['ID', 'Telebe', 'Email', 'Yas', 'Ixtisas', 'Status'],
-            dataRows: rows.map(row => [
-                (row.children[0]?.textContent || '').trim(),
-                (row.children[1]?.dataset.export || row.children[1]?.textContent || '').trim(),
-                row.dataset.exportEmail || (row.children[2]?.dataset.export || '').trim(),
-                (row.children[3]?.textContent || '').trim(),
-                (row.children[4]?.textContent || '').trim(),
-                (row.querySelector('.student-status-badge')?.textContent || '').trim()
-            ])
+            headers: ['ID', 'Tələbə', 'Email', 'Yaş', 'İxtisas', 'Status'],
+            dataRows: [
+                    <% for (int i = 0; i < allStudents.size(); i++) {
+                        Student exportStudent = allStudents.get(i);
+                    %>[
+                    "<%= exportStudent.getId() %>",
+                    "<%= escJs(exportStudent.getName() + " " + exportStudent.getSurname()) %>",
+                    "<%= escJs(exportStudent.getEmail()) %>",
+                    "<%= exportStudent.getAge() %>",
+                    "Java Proqramlasdirma",
+                    "Aktiv"
+                ]<%= i < allStudents.size() - 1 ? "," : "" %>
+                <% } %>
+            ]
         };
     }
+
 
     function refreshStudentCounts() {
         const rows = _stuAllRows || Array.from(document.querySelectorAll('#studentTable tbody tr.stagger-item'));

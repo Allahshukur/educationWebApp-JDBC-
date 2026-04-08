@@ -9,7 +9,13 @@
     --ea-glass: rgba(255, 255, 255, 0.08);
 }
 
-.header-logo-img, .footer-logo-img {
+.header-logo-img {
+    height: 36px !important;
+    width: auto !important;
+    object-fit: contain;
+}
+
+.footer-logo-img {
     width: 200px !important;
     height: auto !important;
 }
@@ -17,7 +23,7 @@
 body {
     font-family: 'Outfit', sans-serif;
     overflow-x: hidden !important;
-    padding-top: 64px;
+    padding-top: 60px;
 }
 
 /* ═ Smooth dark/light keçidi — həmişə aktiv, donma yoxdur ═ */
@@ -2887,6 +2893,7 @@ tr.row-passive td {
 
 .page-breadcrumb-bar {
     padding: 12px 0 !important;
+    margin-top: 0;
 }
 
 .page-breadcrumb-bar .container {
@@ -3326,5 +3333,414 @@ tr.row-passive td {
     .student-distribution-wrap {
         justify-items: center;
         text-align: left;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE HEADER CSS (Mobile First)
+═══════════════════════════════════════════════════════════════ */
+
+/* Hamburger: mobile-da show yoxdursa mütləq gizlət */
+@media (max-width: 991.98px) {
+    #navbarNav:not(.show) {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+.navbar-responsive {
+    padding: 0.5rem 0 !important;
+    min-height: 60px;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.navbar-logo {
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-text {
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+}
+
+/* Mobile Buttons */
+.btn-header-mobile {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    color: white;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    padding: 0 10px;
+    gap: 4px;
+}
+
+.btn-header-mobile:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile lang-pill — compact görünüş */
+.lang-pill-mobile {
+    padding: 6px 10px !important;
+    border-radius: 10px !important;
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.lang-pill-mobile:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+/* Mobile dark toggle pill — compact, label yoxdur */
+.d-flex.d-lg-none .dark-toggle-pill {
+    padding: 6px 10px !important;
+    border-radius: 10px !important;
+    font-size: 0.85rem;
+}
+
+.d-flex.d-lg-none .dark-toggle-pill .dtp-label {
+    display: none;
+}
+
+.btn-lang {
+    min-width: 48px;
+}
+
+.lang-text {
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+/* Hamburger Menu */
+.btn-hamburger {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 8px;
+}
+
+.hamburger-line {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-hamburger:not(.collapsed) .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.btn-hamburger:not(.collapsed) .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.btn-hamburger:not(.collapsed) .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Navigation Links */
+.navbar-nav-responsive {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    padding: 8px 12px !important;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-active {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Language & Dark Toggle Pills */
+.lang-pill, .dark-toggle-pill {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 6px 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.lang-pill:hover, .dark-toggle-pill:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.dtp-knob {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.dtp-label {
+    letter-spacing: 0.5px;
+}
+
+/* Icon & Login Buttons */
+.btn-icon-nav {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    color: white;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-icon-nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.notif-dot {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.btn-login {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-login:hover {
+    background: rgba(255, 255, 255, 0.35);
+    color: white;
+}
+
+/* Tablet Breakpoint (576px+) */
+@media (min-width: 576px) {
+    .navbar-responsive {
+        min-height: 62px;
+        padding: 0.5rem 0 !important;
+    }
+
+    .header-logo-img {
+        height: 40px;
+    }
+
+    .logo-text {
+        font-size: 1.15rem;
+    }
+
+    .btn-header-mobile {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-hamburger {
+        width: 44px;
+        height: 44px;
+    }
+
+    .hamburger-line {
+        width: 20px;
+        height: 2.5px;
+    }
+
+    .nav-link {
+        padding: 10px 14px !important;
+    }
+
+    .lang-pill, .dark-toggle-pill {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Desktop Breakpoint (992px+) */
+@media (min-width: 992px) {
+    .navbar-responsive {
+        min-height: 64px;
+        padding: 0.5rem 0 !important;
+    }
+
+    .header-logo-img {
+        height: 42px;
+    }
+
+    .logo-text {
+        font-size: 1.25rem;
+        margin-left: 8px;
+    }
+
+    .navbar-nav-responsive {
+        flex-direction: row;
+        width: auto;
+        margin-top: 0;
+    }
+
+    .nav-link {
+        padding: 8px 12px !important;
+        margin: 0 4px;
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-active {
+        background: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .lang-pill, .dark-toggle-pill {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .btn-icon-nav {
+        width: 36px;
+        height: 36px;
+    }
+
+    .btn-login {
+        padding: 8px 16px;
+    }
+}
+
+/* ── iPad / small-desktop Breakpoint (992px–1199px) ── */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+    /* Nav linklərini kiçilt */
+    .nav-link {
+        padding: 6px 7px !important;
+        font-size: 0.82rem;
+        margin: 0 1px;
+    }
+
+    /* İkon + mətn arasındakı boşluq */
+    .nav-link .bi {
+        font-size: 0.82rem;
+    }
+
+    /* Axtarış inputu daha dar */
+    #globalSearch {
+        width: 90px !important;
+        font-size: 0.82rem;
+    }
+    .nav-search-wrap {
+        padding: 5px 10px !important;
+    }
+
+    /* Dil pill daha yığcam */
+    .lang-pill {
+        padding: 5px 8px !important;
+        font-size: 0.8rem !important;
+        gap: 4px !important;
+    }
+    .lang-pill-arrow { display: none !important; }
+
+    /* Dark toggle daha yığcam */
+    .dark-toggle-pill {
+        padding: 5px 8px !important;
+        font-size: 0.78rem !important;
+        gap: 4px !important;
+    }
+    .dtp-label { display: none !important; }
+
+    /* Bildiriş düyməsi */
+    .btn-icon-nav {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Giriş düyməsi */
+    .btn-login {
+        padding: 6px 10px !important;
+        font-size: 0.82rem !important;
+    }
+
+    /* Sağ hissə boşluğunu azalt */
+    .d-flex.align-items-center.gap-2 {
+        gap: 0.3rem !important;
+    }
+
+    /* Logo */
+    .header-logo-img {
+        height: 36px !important;
+    }
+}
+
+/* ── Breadcrumb responsive font size ── */
+@media (max-width: 991.98px) {
+    .page-breadcrumb-bar .breadcrumb,
+    .page-breadcrumb-bar .breadcrumb-item {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page-breadcrumb-bar .breadcrumb,
+    .page-breadcrumb-bar .breadcrumb-item {
+        font-size: 0.75rem;
     }
 }

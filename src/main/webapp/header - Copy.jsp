@@ -8,49 +8,45 @@
     boolean isCourse  = uri.endsWith("courses.jsp");
     String pageLabel  = isHome ? "Ana Səhifə" : isStudent ? "Tələbələr" : isTeacher ? "Müəllimlər" : isCourse ? "Kurslar" : "";
 %>
-<!-- RESPONSIVE NAVBAR -->
-<nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top navbar-responsive py-0"
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top py-0"
      style="background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);
             box-shadow:0 2px 20px rgba(79,70,229,0.35);z-index:1030;">
     <div class="container">
 
-        <!-- LOGO -->
-        <a class="navbar-brand navbar-logo flex-shrink-0 p-0" href="index.jsp">
+        <!-- ── Logo ── -->
+        <a class="navbar-brand flex-shrink-0 p-0" href="index.jsp">
             <img src="foto/logo.png" alt="Education App" class="header-logo-img">
         </a>
 
-        <!-- MOBILE: Language + Dark + Hamburger -->
-        <div class="d-flex d-lg-none align-items-center gap-2 ms-auto">
-            <!-- Language Button (mobile) — lang-pill class lazımdır ki script.js tanısın -->
-            <div class="lang-pill lang-pill-mobile" id="langPickerMobile" title="Dil seç">
-                <i class="bi bi-globe2"></i>
+        <!-- ── Mobil: dil + dark toggle + hamburger ── -->
+        <div class="d-flex d-lg-none align-items-center gap-2 ms-auto me-2">
+            <!-- Dil seçici (mobil) -->
+            <div id="langPickerMobile" class="lang-pill" title="Dil seç">
+                <i class="bi bi-globe2 lang-pill-icon"></i>
                 <span class="lang-pill-cur">AZ</span>
+                <i class="bi bi-chevron-down lang-pill-arrow"></i>
             </div>
-
-            <!-- Dark/Light Toggle -->
-            <div id="darkToggleMobile" class="dark-toggle-pill" title="Dark/Light" style="cursor:pointer;padding:6px 10px;border-radius:10px;">
+            <!-- Dark toggle (mobil) -->
+            <div id="darkToggleMobile" class="dark-toggle-pill" title="Dark/Light">
                 <span class="dtp-knob"><i class="bi bi-moon-stars-fill"></i></span>
+                <span class="dtp-label">DARK<br>MODE</span>
             </div>
-
-            <!-- Hamburger Menu -->
-            <button class="navbar-toggler btn-hamburger border-0 flex-shrink-0 collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Menü">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
         </div>
 
-        <!-- TABLET+: Navigation Collapse -->
+        <button class="navbar-toggler border-0 flex-shrink-0" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                style="color:white;background:rgba(255,255,255,0.1);border-radius:8px;padding:6px 10px;">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+
+        <!-- ── Collapse ── -->
         <div class="collapse navbar-collapse" id="navbarNav">
 
-            <!-- Nav Links -->
-            <ul class="navbar-nav navbar-nav-responsive align-items-lg-center me-auto ms-2 ms-lg-3 gap-lg-1">
+            <!-- Nav linklər -->
+            <ul class="navbar-nav align-items-lg-center me-auto ms-3 gap-lg-1">
                 <li class="nav-item">
                     <a class="nav-link nav-btn fw-semibold <%= isHome ? "nav-active" : "" %>"
                        href="index.jsp">
@@ -212,46 +208,4 @@
 </div>
 <% } %>
 
-<!-- Hamburger fix -->
-<script>
-(function() {
-    // Dərhal icra et — DOMContentLoaded gözləmə
-    var navCollapse = document.getElementById('navbarNav');
-    if (navCollapse && window.innerWidth < 992) {
-        navCollapse.classList.remove('show');
-    }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var nav = document.getElementById('navbarNav');
-        if (!nav) return;
-
-        // Yenidən yüklənəndə mobile-da bağlı olsun
-        if (window.innerWidth < 992) {
-            nav.classList.remove('show');
-        }
-
-        // Nav link klikləndikdə mobile-da menünü bağla
-        nav.querySelectorAll('a.nav-link').forEach(function(link) {
-            link.addEventListener('click', function() {
-                if (window.innerWidth >= 992) return;
-                nav.classList.remove('show');
-                var toggler = document.querySelector('.btn-hamburger');
-                if (toggler) toggler.classList.add('collapsed');
-            });
-        });
-
-        // Resize: desktop-a keçdikdə menünü gizlət (açıq qalmasın)
-        var resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                if (window.innerWidth >= 992) {
-                    nav.classList.remove('show');
-                    var toggler = document.querySelector('.btn-hamburger');
-                    if (toggler) toggler.classList.add('collapsed');
-                }
-            }, 100);
-        });
-    });
-})();
-</script>

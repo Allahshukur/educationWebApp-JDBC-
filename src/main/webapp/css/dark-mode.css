@@ -202,10 +202,23 @@ body.dark-mode .custom-table-card .table tbody > tr:hover {
 }
 
 /* ── Dil seçici dropdown ── */
-body.dark-mode #langDropdownPortal { background: #1e293b; }
-body.dark-mode .lang-opt           { color: #e2e8f0; }
-body.dark-mode .lang-opt:hover     { background: #334155; color: #818cf8; }
-body.dark-mode .lang-opt.active-lang { background: #312e81; color: #818cf8; }
+body.dark-mode #langDropdownPortal {
+    background: #1e293b;
+}
+
+body.dark-mode .lang-opt {
+    color: #e2e8f0;
+}
+
+body.dark-mode .lang-opt:hover {
+    background: #334155;
+    color: #818cf8;
+}
+
+body.dark-mode .lang-opt.active-lang {
+    background: #312e81;
+    color: #818cf8;
+}
 
 /* ── Testimonial kart ── */
 body.dark-mode .testimonial-card {
@@ -235,9 +248,16 @@ body.dark-mode .ea-toast {
 
 /* ── Export modal düymələri ── */
 body.dark-mode .export-fmt-btn,
-body.dark-mode .export-row-btn  { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+body.dark-mode .export-row-btn {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+}
+
 body.dark-mode .export-fmt-btn:hover,
-body.dark-mode .export-row-btn:hover { border-color: #818cf8; }
+body.dark-mode .export-row-btn:hover {
+    border-color: #818cf8;
+}
 
 /* ── Students / Teachers səhifəsi ── */
 body.dark-mode .students-section {
@@ -334,3 +354,90 @@ body.dark-mode .student-table tbody tr.row-passive td {
         border-bottom-color: rgba(15, 23, 42, 0.12) !important;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE – RESPONSIVE HEADER
+═══════════════════════════════════════════════════════════════ */
+
+body.dark-mode .navbar-responsive {
+    background:
+        radial-gradient(ellipse 60% 80% at 10% 50%, rgba(88, 28, 180, 0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 90% at 85% 40%, rgba(67, 56, 202, 0.5) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 50% 80%, rgba(139, 92, 246, 0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #0d0b1e 0%, #1a1035 40%, #0f0c2a 100%) !important;
+}
+
+body.dark-mode .btn-header-mobile {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .btn-header-mobile:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark-mode .btn-hamburger {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-mode .hamburger-line {
+    background-color: #e2e8f0;
+}
+
+body.dark-mode .nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+body.dark-mode .nav-link:hover {
+    background: rgba(0, 0, 0, 0.2) !important;
+    color: white !important;
+}
+
+body.dark-mode .nav-active {
+    background: rgba(0, 0, 0, 0.25) !important;
+    color: white !important;
+}
+
+body.dark-mode .lang-pill,
+body.dark-mode .dark-toggle-pill {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .lang-pill:hover,
+body.dark-mode .dark-toggle-pill:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark-mode .btn-icon-nav {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .btn-icon-nav:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .btn-login {
+    background: rgba(0, 0, 0, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .btn-login:hover {
+    background: rgba(0, 0, 0, 0.35) !important;
+    color: #e2e8f0 !important;
+}
+
+lor: #e2e8f0 !important;
+}
+
+body.dark-mode .page-breadcrumb-bar {
+    background-color: #1e293b !important;
+    border-c
