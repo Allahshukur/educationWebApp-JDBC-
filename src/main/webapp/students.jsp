@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.sukur.new_educationwebapp.student.entity.Student" %>
-<%@ page import="com.sukur.new_educationwebapp.student.service.StudentService" %>
+<%@ page import="com.sukur.educationwebapp.student.entity.Student" %>
+<%@ page import="com.sukur.educationwebapp.student.service.StudentService" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%!
     private String escJs(String value) {
@@ -45,8 +45,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="css/style.css?v=4.2" rel="stylesheet">
-    <link href="css/dark-mode.css?v=1.0" rel="stylesheet">
+    <link href="css/style.css?v=4.3" rel="stylesheet">
+    <link href="css/dark-mode.css?v=1.1" rel="stylesheet">
 </head>
 <body class="overflow-hidden-init">
 
@@ -68,7 +68,7 @@
 <section class="py-5 students-section min-vh-100">
     <div class="container py-4 student-shell">
         <div class="row g-4 mb-4">
-            <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="0">
+            <div class="col-6 col-xl-3" data-aos="fade-up" data-aos-delay="0">
                 <div class="stat-card-modern primary-card">
                     <div class="stat-icon-wrap"><i class="bi bi-people-fill"></i></div>
                     <div class="stat-info">
@@ -78,7 +78,7 @@
                     <div class="stat-bg-icon"><i class="bi bi-people-fill"></i></div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-6 col-xl-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-card-modern success-card">
                     <div class="stat-icon-wrap"><i class="bi bi-check2-circle"></i></div>
                     <div class="stat-info">
@@ -88,7 +88,7 @@
                     <div class="stat-bg-icon"><i class="bi bi-check2-circle"></i></div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-6 col-xl-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="stat-card-modern warning-card">
                     <div class="stat-icon-wrap"><i class="bi bi-mortarboard-fill"></i></div>
                     <div class="stat-info">
@@ -98,7 +98,7 @@
                     <div class="stat-bg-icon"><i class="bi bi-mortarboard-fill"></i></div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-6 col-xl-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="stat-card-modern danger-card">
                     <div class="stat-icon-wrap"><i class="bi bi-star-fill"></i></div>
                     <div class="stat-info">
@@ -394,7 +394,7 @@
                                 for (Student student : students) {
                                     String initials = student.getName().substring(0, 1).toUpperCase() + student.getSurname().substring(0, 1).toUpperCase();
                             %>
-                            <tr class="stagger-item" data-export-email="<%= student.getEmail() %>" data-status="active">
+                            <tr class="stagger-item row-clickable" data-sid="<%= student.getId() %>" data-export-email="<%= student.getEmail() %>" data-status="active">
                                 <td class="ps-4"><span class="id-badge"><%= student.getId() %></span></td>
                                 <td data-export="<%= student.getName() %> <%= student.getSurname() %>">
                                     <div class="d-flex align-items-center gap-3">
@@ -718,11 +718,43 @@
     function stuFullscreen() {
         const card = document.getElementById('studentTableCard');
         const icon = document.getElementById('stuFsIcon');
-        const btn = document.getElementById('stuFsBtn');
-        const isFs = card.classList.toggle('edu-tbl-fullscreen');
-        icon.className = isFs ? 'bi bi-fullscreen-exit' : 'bi bi-fullscreen';
-        btn.classList.toggle('fs-active', isFs);
+        const btn  = document.getElementById('stuFsBtn');
+
+        if (!card.classList.contains('edu-tbl-fullscreen')) {
+            /* ── Fullscreen girişi ──
+               AOS-un parent-də saxladığı transform: translate3d(0,0,0)
+               position:fixed-i viewport-a deyil parent-ə bağlayır.
+               Bunu aradan qaldırmaq üçün kartı birbaşa <body>-ə köçürürük. */
+            card._origParent  = card.parentElement;
+            card._origNextSib = card.nextSibling || null;
+            document.body.appendChild(card);
+            card.classList.add('edu-tbl-fullscreen');
+            icon.className = 'bi bi-fullscreen-exit';
+            btn.classList.add('fs-active');
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('has-fullscreen');
+        } else {
+            /* ── Fullscreen çıxışı ── */
+            card.classList.remove('edu-tbl-fullscreen');
+            if (card._origParent) {
+                card._origParent.insertBefore(card, card._origNextSib);
+            }
+            icon.className = 'bi bi-fullscreen';
+            btn.classList.remove('fs-active');
+            document.body.style.overflow = '';
+            document.body.classList.remove('has-fullscreen');
+        }
     }
+
+    /* ─── Esc → fullscreen bağla ─── */
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const card = document.getElementById('studentTableCard');
+            if (card && card.classList.contains('edu-tbl-fullscreen')) {
+                stuFullscreen();
+            }
+        }
+    });
 
     document.querySelectorAll('#studentTable .btn-edit, #studentTable .btn-delete').forEach(btn => {
         btn.dataset.modalToggle = btn.getAttribute('data-bs-toggle') || '';
@@ -765,26 +797,31 @@
                 btn.removeAttribute('data-bs-toggle');
                 btn.removeAttribute('data-bs-target');
             } else {
-                if (btn.dataset.modalToggle) btn.setAttribute('data-bs-toggle', btn.dataset.modalToggle);
+
+                if (btn.dataset.modalToggle) btn.setAttribute('data-bs-toggle', 'modal');
                 if (btn.dataset.modalTarget) btn.setAttribute('data-bs-target', btn.dataset.modalTarget);
             }
         });
-
-        refreshStudentCounts();
-
-        const activeFilterBtn = document.querySelector('.edu-qf.active');
-        if (activeFilterBtn) {
-            studentFilter(activeFilterBtn, activeFilterBtn.dataset.filter || 'all');
-        } else {
-            updateStudentVisibleCount();
-        }
     });
-
-    document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => new bootstrap.Popover(el));
-    document.addEventListener('table:pageChanged', function (event) {
-        if (event.detail && event.detail.tableId === '#studentTable') updateStudentVisibleCount();
-    });
-    updateStudentVisibleCount();
 </script>
+
+<script>
+/* ── Tələbə sətrinə klik → student-page.jsp ── */
+(function initRowClick() {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('#studentTable tbody tr.row-clickable').forEach(function (row) {
+            row.style.cursor = 'pointer';
+            row.addEventListener('click', function (e) {
+                // Əgər klik düyməyə, checkboxa və ya modal trigger-ə aiddisə — keç
+                if (e.target.closest('.btn-action, .btn-edit, .btn-delete, .btn-view, button, input, a')) return;
+                var sid = row.dataset.sid;
+                if (sid) window.location.href = 'student-page.jsp?id=' + sid;
+            });
+        });
+    });
+})();
+</script>
+
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

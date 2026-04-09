@@ -435,9 +435,200 @@ body.dark-mode .btn-login:hover {
     color: #e2e8f0 !important;
 }
 
-lor: #e2e8f0 !important;
-}
-
 body.dark-mode .page-breadcrumb-bar {
     background-color: #1e293b !important;
-    border-c
+    border-color: #334155 !important;
+}
+
+/* ════════════════════════════════════════════════════
+   TEACHER GALAXY DASHBOARD  —  tg-*  (dark mode)
+════════════════════════════════════════════════════ */
+body.dark-mode .teacher-galaxy-section {
+    background:
+        radial-gradient(ellipse 55% 50% at 10% 20%, rgba(124,58,237,.22) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 45% at 88% 75%, rgba(79,70,229,.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 50% 0%,  rgba(6,182,212,.07) 0%, transparent 60%),
+        linear-gradient(135deg, #0d0b1e 0%, #1a1035 50%, #0f0c2a 100%);
+    background-attachment: fixed;
+}
+
+body.dark-mode .tg-page-title { color: #f1f5f9; }
+body.dark-mode .tg-page-sub   { color: rgba(255,255,255,.55); }
+
+body.dark-mode .tg-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+body.dark-mode .tg-card-title { color: rgba(255,255,255,.5); }
+
+/* Mövcud cədvəl kartı — dark */
+body.dark-mode .teacher-galaxy-section .custom-table-card {
+    background: rgba(255,255,255,.04) !important;
+    border: 1px solid rgba(255,255,255,.1) !important;
+    box-shadow: none !important;
+}
+body.dark-mode .teacher-galaxy-section .custom-table-card .card-header.bg-white {
+    background: rgba(255,255,255,.05) !important;
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+}
+body.dark-mode .teacher-galaxy-section .custom-table-card .card-footer.bg-white {
+    background: rgba(255,255,255,.04) !important;
+}
+
+/* Profil */
+body.dark-mode .tg-profile-name  { color: #f1f5f9; }
+body.dark-mode .tg-profile-role  { color: rgba(255,255,255,.5); }
+body.dark-mode .tg-pstat-val     { color: #fff; }
+body.dark-mode .tg-pstat-lbl     { color: rgba(255,255,255,.45); }
+body.dark-mode .tg-pstat-divider { background: rgba(255,255,255,.15); }
+body.dark-mode .tg-profile-email { color: rgba(255,255,255,.45); }
+
+/* Bacarım */
+body.dark-mode .tg-skill-name { color: rgba(255,255,255,.7); }
+body.dark-mode .tg-skill-pct  { color: #fff; }
+body.dark-mode .tg-progress   { background: rgba(255,255,255,.1); }
+
+/* Top siyahı */
+body.dark-mode .tg-top-item { border-color: rgba(255,255,255,.08); }
+body.dark-mode .tg-top-name { color: #f1f5f9; }
+body.dark-mode .tg-top-sub  { color: rgba(255,255,255,.45); }
+
+/* Avatar sıraları */
+body.dark-mode .tg-av-row { border-color: rgba(255,255,255,.08); }
+body.dark-mode .tg-av-name { color: #f1f5f9; }
+
+/* ──────────────────────────────────────────────
+   STUDENT-PAGE.JSP — Dark Mode Stillər
+   ────────────────────────────────────────────── */
+
+/* Hero section */
+body.dark-mode .sp-hero {
+    background: linear-gradient(135deg, #312e81 0%, #4c1d95 60%, #5b21b6 100%) !important;
+}
+
+/* Info kartlar */
+body.dark-mode .sp-info-card {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .sp-info-card-title {
+    color: #64748b !important;
+}
+
+/* Info rows */
+body.dark-mode .sp-info-row {
+    border-color: #334155 !important;
+}
+
+body.dark-mode .sp-info-label {
+    color: #64748b !important;
+}
+
+body.dark-mode .sp-info-value {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .sp-info-value a {
+    color: #818cf8 !important;
+}
+
+/* Stat kartlar */
+body.dark-mode .sp-stat {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .sp-stat-value {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .sp-stat-label {
+    color: #64748b !important;
+}
+
+body.dark-mode .sp-stat-icon[style*="background:#ede9fe"] {
+    background: #1e1b4b !important;
+}
+body.dark-mode .sp-stat-icon[style*="background:#d1fae5"] {
+    background: #052e16 !important;
+}
+body.dark-mode .sp-stat-icon[style*="background:#fef3c7"] {
+    background: #2d1700 !important;
+}
+body.dark-mode .sp-stat-icon[style*="background:#dbeafe"] {
+    background: #0c1a3a !important;
+}
+
+/* Müəllim chipləri */
+body.dark-mode .sp-teacher-chip {
+    background: #334155 !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Progress bar */
+body.dark-mode .sp-progress-label {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .sp-progress-bar {
+    background: #334155 !important;
+}
+
+/* Timeline */
+body.dark-mode .sp-timeline-item {
+    border-color: #334155 !important;
+}
+
+body.dark-mode .sp-timeline-title {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .sp-timeline-time {
+    color: #64748b !important;
+}
+
+/* Timeline dot icon backgrounds (dark) */
+body.dark-mode .sp-timeline-dot[style*="background:#ede9fe"] {
+    background: #1e1b4b !important;
+}
+body.dark-mode .sp-timeline-dot[style*="background:#d1fae5"] {
+    background: #052e16 !important;
+}
+body.dark-mode .sp-timeline-dot[style*="background:#dbeafe"] {
+    background: #0c1a3a !important;
+}
+body.dark-mode .sp-timeline-dot[style*="background:#fef3c7"] {
+    background: #2d1700 !important;
+}
+
+/* Info icon backgrounds (dark) */
+body.dark-mode .sp-info-icon[style*="background:#ede9fe"] { background: #1e1b4b !important; }
+body.dark-mode .sp-info-icon[style*="background:#dbeafe"] { background: #0c1a3a !important; }
+body.dark-mode .sp-info-icon[style*="background:#d1fae5"] { background: #052e16 !important; }
+body.dark-mode .sp-info-icon[style*="background:#fef3c7"] { background: #2d1700 !important; }
+body.dark-mode .sp-info-icon[style*="background:#fce7f3"] { background: #2d0a1a !important; }
+body.dark-mode .sp-info-icon[style*="background:#f0fdf4"] { background: #052e16 !important; }
+
+/* Not found */
+body.dark-mode .sp-not-found-icon { color: #475569 !important; }
+
+/* Page background override for student-page */
+body.dark-mode { background: #0f172a !important; }
+
+/* Breadcrumb bar */
+body.dark-mode .page-breadcrumb-bar {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* Row clickable hover in students.jsp table */
+body.dark-mode #studentTable tbody tr.stagger-item.row-clickable:hover {
+    background: rgba(99,102,241,0.12) !important;
+    cursor: pointer;
+}

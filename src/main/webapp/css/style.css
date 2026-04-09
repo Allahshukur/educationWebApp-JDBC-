@@ -10,7 +10,7 @@
 }
 
 .header-logo-img {
-    height: 36px !important;
+    height: 44px !important;
     width: auto !important;
     object-fit: contain;
 }
@@ -2892,7 +2892,7 @@ tr.row-passive td {
 }
 
 .page-breadcrumb-bar {
-    padding: 12px 0 !important;
+    padding: 5px 0 !important;
     margin-top: 0;
 }
 
@@ -2905,29 +2905,50 @@ tr.row-passive td {
 }
 
 .page-breadcrumb-bar .breadcrumb {
-    line-height: 1.45;
+    line-height: 1.3;
+    margin-bottom: 0;
+    font-size: 0.75rem;
 }
 
 .page-breadcrumb-bar .breadcrumb-item {
-    line-height: 1.45;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.3;
     vertical-align: middle;
+    color: #94a3b8;
+}
+
+.page-breadcrumb-bar .breadcrumb-item.active {
+    font-weight: 500;
+    color: #64748b;
 }
 
 .page-breadcrumb-bar .breadcrumb-item a {
     display: inline-flex;
     align-items: center;
-    line-height: 1.35;
+    line-height: 1.3;
+    color: #64748b;
+    font-weight: 400;
+}
+
+.page-breadcrumb-bar .breadcrumb-item a:hover {
+    color: #4f46e5;
 }
 
 .page-breadcrumb-bar .breadcrumb-item + .breadcrumb-item::before {
-    padding-right: 0.55rem;
-    line-height: 1.45;
+    padding-right: 0.4rem;
+    padding-left: 0.1rem;
+    line-height: 1.3;
     vertical-align: middle;
+    color: #cbd5e1;
+    font-size: 0.7rem;
 }
 
 .page-breadcrumb-bar .breadcrumb-item i {
+    font-size: 0.72rem;
     line-height: 1;
     vertical-align: middle;
+    margin-right: 3px !important;
 }
 
 .student-analytics-card,
@@ -3251,6 +3272,12 @@ tr.row-passive td {
     z-index: 9999 !important;
     overflow: auto !important;
 }
+
+/* ── Fullscreen aktiv ikən modal, backdrop və dropdown-lar üstdə görünsün ── */
+body.has-fullscreen .modal-backdrop { z-index: 10040 !important; }
+body.has-fullscreen .modal          { z-index: 10050 !important; }
+body.has-fullscreen .dropdown-menu  { z-index: 10030 !important; }
+body.has-fullscreen #notifPanel     { z-index: 10030 !important; }
 
 #studentTable.edu-compact td,
 #studentTable.edu-compact th {
@@ -3743,4 +3770,125 @@ tr.row-passive td {
     .page-breadcrumb-bar .breadcrumb-item {
         font-size: 0.75rem;
     }
+}
+
+/* ════════════════════════════════════════════════════
+   TEACHER GALAXY DASHBOARD  —  tg-*  (light mode)
+════════════════════════════════════════════════════ */
+.teacher-galaxy-section {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 50%, #f5f0ff 100%);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ── Başlıq ── */
+.tg-icon-box {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: #fff;
+    box-shadow: 0 4px 15px rgba(124,58,237,.4);
+    flex-shrink: 0;
+}
+.tg-page-title { color: #1e1b4b; font-size: 1.55rem; }
+.tg-page-sub   { color: #64748b; font-size: .85rem; }
+.tg-btn-add {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff; border: none; border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(124,58,237,.38);
+    transition: all .2s;
+}
+.tg-btn-add:hover { transform: translateY(-2px); color: #fff; box-shadow: 0 8px 25px rgba(124,58,237,.5); }
+
+/* ── Stat kartları ── */
+.tg-stat-card {
+    border-radius: 16px; padding: 1rem;
+    display: flex; align-items: center; gap: .85rem;
+    overflow: hidden; transition: transform .2s;
+}
+.tg-stat-card:hover { transform: translateY(-3px); }
+.tg-stat-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: rgba(255,255,255,.22);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; color: #fff; flex-shrink: 0;
+}
+.tg-stat-val { font-size: 1.55rem; font-weight: 800; color: #fff; line-height: 1; }
+.tg-stat-lbl { font-size: .75rem; color: rgba(255,255,255,.78); margin-top: 2px; }
+.tg-stat-blue   { background: linear-gradient(135deg, #1d4ed8, #4f46e5); }
+.tg-stat-green  { background: linear-gradient(135deg, #059669, #10b981); }
+.tg-stat-yellow { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.tg-stat-purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+
+/* ── Kartlar ── */
+.tg-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,.06);
+}
+.tg-card-title {
+    font-size: .78rem; font-weight: 700;
+    letter-spacing: .5px; text-transform: uppercase;
+    color: #64748b; margin-bottom: .9rem;
+    display: flex; align-items: center;
+}
+
+/* Mövcud cədvəl kartının uyğunlaşması */
+.teacher-galaxy-section .custom-table-card {
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,.06) !important;
+    overflow: hidden;
+}
+
+/* ── Deaktiv edilmiş sətir: məzmun solğun, göz düyməsi tam görünür ── */
+#teacherTable tr.tch-row-inactive td {
+    opacity: 0.38;
+    filter: grayscale(60%);
+}
+#teacherTable tr.tch-row-inactive .btn-view {
+    opacity: 1 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+/* Deaktiv sətirdə edit/delete işləməsin */
+#teacherTable tr.tch-row-inactive .btn-edit,
+#teacherTable tr.tch-row-inactive .btn-delete {
+    opacity: 0.22 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}
+
+/* ── Müəllim profili ── */
+.tg-profile-box { text-align: center; }
+.tg-profile-img {
+    width: 72px; height: 72px; border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(124,58,237,.5);
+    margin-bottom: .6rem;
+}
+.tg-profile-name { color: #1e293b; font-weight: 700; font-size: .95rem; }
+.tg-profile-role { color: #64748b; font-size: .78rem; margin-bottom: .8rem; }
+.tg-profile-stats { display: flex; justify-content: center; margin-bottom: .8rem; }
+.tg-pstat { flex: 1; text-align: center; }
+.tg-pstat-val { display: block; color: #1e293b; font-weight: 700; font-size: 1rem; }
+.tg-pstat-lbl { display: block; color: #64748b; font-size: .7rem; }
+.tg-pstat-divider { width: 1px; background: #e2e8f0; margin: .15rem 0; }
+.tg-profile-email { color: #64748b; font-size: .73rem; }
+
+/* ── Bacarım profili ── */
+.tg-skill-item { margin-bottom: .85rem; }
+.tg-skill-name { color: #475569; font-size: .8rem; }
+.tg-sk
+/* ── Student table row — clickable hover ── */
+#studentTable tbody tr.row-clickable {
+    cursor: pointer;
+    transition: background 0.18s;
+}
+#studentTable tbody tr.row-clickable:hover {
+    background: rgba(79, 70, 229, 0.06) !important;
 }
